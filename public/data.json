@@ -1,0 +1,83 @@
+[
+    {
+      
+      
+      "name": "IPHONE",
+      "seller": "Apple",
+      "description": 420,
+      "stock": 20,
+      "img": "https://i.ibb.co/Q8BFdjJ/iphone1.jpg"
+    },
+    {
+      
+      
+      "name": "DESKTOP PC",
+      "seller": "Asus",
+      "description": 196,
+      "stock": 19,
+      "img": "https://i.ibb.co/PYvzMFs/desktop2.jpg"
+    },
+    {
+      
+      
+      "name": "LAPTOP",
+      "seller": "Msi",
+      "description": 245,
+      "stock": 20,
+      "img": "https://i.ibb.co/RcqBKGP/lp.jpg"
+    },
+    {
+      
+      
+      "name": "CAMERA",
+      "seller": "Sony",
+      "description": 229,
+      "stock": 10,
+      "img": "https://i.ibb.co/nMdJ4SX/camera.jpg"
+    },
+    {
+      
+      
+      "name": "MONITOR",
+      "seller": "LG",
+      "description": 287,
+      "stock": 11,
+      "img": "https://i.ibb.co/y4nG0bS/Monitor.jpg"
+    },
+    {
+      
+      
+      "name": "PRINTER",
+      "seller": "HP",
+      "description": 138,
+      "stock": 19,
+      "img": "https://i.ibb.co/wpjzJFR/printer.jpg"
+    },
+    {
+      
+      
+      "name": "AIR CONDITIONER",
+      "seller": "Gree",
+      "description": 287,
+      "stock": 17,
+      "img": "https://i.ibb.co/hgL8ttv/air-conditon.jpg"
+    },
+    {
+      
+      
+      "name": "REFRIGERATOR",
+      "seller": "LG",
+      "description": 287,
+      "stock": 15,
+      "img": "https://i.ibb.co/kMjwsXN/refrigerator.jpg"
+    },
+    {
+      
+      
+      "name": "SMART TV",
+      "seller": "Samsung",
+      "description": 287,
+      "stock": 11,
+      "img": "https://i.ibb.co/vX9c1TL/tv.jpg"
+    }
+  ]
