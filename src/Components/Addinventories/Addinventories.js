@@ -1,10 +1,13 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Addinventories = () => {
     const { register, handleSubmit } = useForm();
+    const navigate=useNavigate()
+    const location=useLocation()
+    let from = location.state?.from?.pathname || "/";
     const onSubmit = data => {
-        console.log(data)
         const url='http://localhost:2000/inventories'
         fetch(url,{
             method:'POST',
@@ -15,7 +18,9 @@ const Addinventories = () => {
         })
         .then(response=>response.json())
         .then(result=>{
-            console.log(result)
+            if(result){
+                navigate(from, { replace: true });
+            }
         })
   
     };
