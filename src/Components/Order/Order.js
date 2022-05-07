@@ -1,20 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 
 const Order = () => {
     const{inventoriesId}=useParams()
     const [inventory,setInventory]=useState({})
-    const navigate=useNavigate()
     useEffect(()=>{
         const url=`http://localhost:2000/inventories/${inventoriesId}`
         fetch(url)
         .then(response=>response.json())
         .then(data=>setInventory(data))
     },[])
-    const handleProceed=()=>{
-        navigate('/checkout')
+    const handleDelivered=()=>{
+      const stock=inventory?.stock-1
+      setInventory({...inventory,stock:stock})
+      const url=`http://localhost:2000/inventories/${inventoriesId}`
+      fetch(url,{
+          method:'PUT',
+          headers:{
+              'content-type':'application/json'
+          },
+          body:JSON.stringify({stock})
+      })
+      .then(response=>response.json())
+      .then(data=>{
+        alert('Delivered Successfully!!!!')
+          console.log(data)
+      })
     }
+    const handleSubmit=(event)=>{
+      event.preventDefault()
+      const num=parseInt(event.target.number.value)
+      const updateStock=parseInt(inventory?.stock+num)
+      setInventory({...inventory,stock:updateStock})
+      const url=`http://localhost:2000/inventories/${inventoriesId}`
+      fetch(url,{
+          method:'PUT',
+          headers:{
+              'content-type':'application/json'
+          },
+          body:JSON.stringify({updateStock})
+      })
+      .then(response=>response.json())
+      .then(data=>{
+           alert('Restock Successfully!!!!')
+          console.log("Data get",data)
+          event.target.reset()
+      })
+    }
+  
     return (
         <div className='d-flex pt-5 justify-content-center align-items-md-center'>
           <Card style={{ width: '18rem' }}>
@@ -31,11 +65,11 @@ const Order = () => {
     <Card.Text>
     <strong>Stock:{inventory.stock}</strong>
     </Card.Text>
-    <Button onClick={ handleProceed}   variant="info text-light ms-3">Delivered</Button>
-    <div class="mt-3">
-          <input name='number' type='number' class="form-control pt-3" id="exampleInputPassword1"/>
-          <button type="submit" class="btn btn-primary w-100 mt-3">Restock</button>
-        </div>
+    <Button  onClick={handleDelivered} variant="info text-light ms-3">Delivered</Button>
+    <form onSubmit={handleSubmit} class="mt-3">
+          <input name='number' type='number' class="form-control mt-3" id="exampleInputPassword1"/>
+          <input className='btn btn-primary w-100 mt-3' type="submit" value="Restoke" />
+        </form>
   </Card.Body>
   </div>
 </Card>
