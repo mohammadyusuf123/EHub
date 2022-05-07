@@ -32,7 +32,7 @@ const Addinventories = () => {
       <input className='mb-3' placeholder='Inventories Name' {...register("name", { required: true, maxLength: 20 })} />
       <textarea className='mb-3' placeholder='Description' {...register("description")} />
       <input className='mb-3' placeholder='seller' type="text" {...register("text")} />
-      <input className='mb-3' placeholder='stoke' type="number" {...register("stoke")} />
+      <input className='mb-3' placeholder='stock' type="number" {...register("stock")} />
       <input className='mb-3' placeholder='Photo URL' type="text" {...register("img")} />
       <input className='mb-3 bg-primary text-white'  type="Submit" />
     </form>

@@ -31,15 +31,15 @@ const Order = () => {
     const handleSubmit=(event)=>{
       event.preventDefault()
       const num=parseInt(event.target.number.value)
-      const updateStock=parseInt(inventory?.stock+num)
-      setInventory({...inventory,stock:updateStock})
+      const stock=(inventory?.stock+num)
+      setInventory({...inventory,stock:stock})
       const url=`http://localhost:2000/inventories/${inventoriesId}`
       fetch(url,{
           method:'PUT',
           headers:{
               'content-type':'application/json'
           },
-          body:JSON.stringify({updateStock})
+          body:JSON.stringify({stock})
       })
       .then(response=>response.json())
       .then(data=>{
@@ -67,7 +67,7 @@ const Order = () => {
     </Card.Text>
     <Button  onClick={handleDelivered} variant="info text-light ms-3">Delivered</Button>
     <form onSubmit={handleSubmit} class="mt-3">
-          <input name='number' type='number' class="form-control mt-3" id="exampleInputPassword1"/>
+          <input name='number' type='number' placeholder='Stock Amount' class="form-control mt-3"required id="exampleInputPassword1"/>
           <input className='btn btn-primary w-100 mt-3' type="submit" value="Restoke" />
         </form>
   </Card.Body>
