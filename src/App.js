@@ -8,6 +8,7 @@ import Checkout from './Components/Checkout/Checkout';
 import Home from './Components/Home/Home';
 import Inventories from './Components/Inventories/Inventories';
 import Login from './Components/Login/Login';
+import ManageInventories from './Components/ManageInventories/ManageInventories';
 import Navbar from './Components/Navbar/Navbar';
 import NotFound from './Components/NotFound/NotFound';
 import Order from './Components/Order/Order';
@@ -26,6 +27,9 @@ function App() {
         </RequireAuth>}></Route>
        <Route path='/addinventories' element={<RequireAuth>
           <Addinventories>.</Addinventories>
+        </RequireAuth>}></Route>
+       <Route path='/manageinventories' element={<RequireAuth>
+          <ManageInventories></ManageInventories>
         </RequireAuth>}></Route>
        <Route path='/checkout' element={<RequireAuth>
           <Checkout></Checkout>

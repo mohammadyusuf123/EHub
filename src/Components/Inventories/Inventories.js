@@ -20,8 +20,6 @@ const Inventories = () => {
                 window.location.pathname!== '/inventories' && <Button onClick={()=>{navigate('/inventories')
             }} className='btn btn-info text-light w-25 mx-auto mt-4 '>See All Inventories</Button>
            }
-
-        
         </div>
         </div>
     );

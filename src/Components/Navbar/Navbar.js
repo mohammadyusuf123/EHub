@@ -22,7 +22,7 @@ const Navbar = () => {
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse d-flex justify-content-end pe-5 " id="navbarNav">
+        <div class="collapse navbar-collapse d-flex justify-content-end  " id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
             <NavLink className={({isActive})=>isActive?"active-link ": "link"} to='/'>Home</NavLink>
@@ -33,9 +33,16 @@ const Navbar = () => {
             <li class="nav-item">
             <NavLink className= {({isActive})=>isActive?"active-link ": "link"}  to='/blog'>Blogs</NavLink>
             </li>
-            <li class="nav-item">
+            {
+              user&&<>
+              <li class="nav-item">
             <NavLink className= {({isActive})=>isActive?"active-link ": "link"}  to='/addinventories'> Add Inventories</NavLink>
             </li>
+            <li class="nav-item">
+            <NavLink className= {({isActive})=>isActive?"active-link ": "link"}  to='/manageinventories'> Manage Inventories</NavLink>
+            </li>
+            </>
+            }
             {
               user?<Button className='link btn-light' onClick={handleSingOut}><h6>Log Out</h6></Button>
               :<li class="nav-item">
