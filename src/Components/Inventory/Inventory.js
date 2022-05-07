@@ -1,8 +1,13 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Inventory = ({inventory}) => {
-    const{img,description,name,seller,stock}=inventory
+    const{_id,img,description,name,seller,stock}=inventory
+    const navigate=useNavigate()
+    const handleOrder=(id)=>{
+        navigate(`/inventories/${id}`)
+    }
     return (
               <div className='col-md-4 '>
             
@@ -20,7 +25,7 @@ const Inventory = ({inventory}) => {
     <Card.Text>
     <strong>Stock:{stock}</strong>
     </Card.Text>
-    <Button  variant="info text-light ms-3">Booking Now</Button>
+    <Button  onClick={()=>handleOrder(_id)} variant="info text-light ms-3">Order Now</Button>
   </Card.Body>
   </div>
 </Card>

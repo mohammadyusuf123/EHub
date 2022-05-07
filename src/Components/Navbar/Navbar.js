@@ -33,6 +33,9 @@ const Navbar = () => {
             <li class="nav-item">
             <NavLink className= {({isActive})=>isActive?"active-link ": "link"}  to='/blog'>Blogs</NavLink>
             </li>
+            <li class="nav-item">
+            <NavLink className= {({isActive})=>isActive?"active-link ": "link"}  to='/addinventories'> Add Inventories</NavLink>
+            </li>
             {
               user?<Button className='link btn-light' onClick={handleSingOut}><h6>Log Out</h6></Button>
               :<li class="nav-item">
