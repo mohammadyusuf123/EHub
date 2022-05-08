@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import About from './Components/About/About';
 import Addinventories from './Components/Addinventories/Addinventories';
+import Allorders from './Components/Allorders/Allorders';
 import Blogs from './Components/Blogs/Blogs';
 import Checkout from './Components/Checkout/Checkout';
 import Home from './Components/Home/Home';
@@ -31,8 +32,11 @@ function App() {
        <Route path='/manageinventories' element={<RequireAuth>
           <ManageInventories></ManageInventories>
         </RequireAuth>}></Route>
-       <Route path='/checkout' element={<RequireAuth>
+       <Route path='/checkout/:inventoriesId' element={<RequireAuth>
           <Checkout></Checkout>
+        </RequireAuth>}></Route>
+       <Route path='/allorders' element={<RequireAuth>
+          <Allorders></Allorders>
         </RequireAuth>}></Route>
        <Route path='/blog' element={<Blogs></Blogs>}></Route>
        <Route path='/login' element={<Login></Login>}></Route>

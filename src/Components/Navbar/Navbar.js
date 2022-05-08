@@ -36,10 +36,13 @@ const Navbar = () => {
             {
               user&&<>
               <li class="nav-item">
-            <NavLink className= {({isActive})=>isActive?"active-link ": "link"}  to='/addinventories'> Add Inventories</NavLink>
+            <NavLink className= {({isActive})=>isActive?"active-link ": "link"}  to='/addinventories'> Add </NavLink>
             </li>
             <li class="nav-item">
-            <NavLink className= {({isActive})=>isActive?"active-link ": "link"}  to='/manageinventories'> Manage Inventories</NavLink>
+            <NavLink className= {({isActive})=>isActive?"active-link ": "link"}  to='/manageinventories'> Manage </NavLink>
+            </li>
+            <li class="nav-item">
+            <NavLink className= {({isActive})=>isActive?"active-link ": "link"}  to='/allorders'> My Order</NavLink>
             </li>
             </>
             }

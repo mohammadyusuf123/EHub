@@ -1,12 +1,14 @@
 import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import google from'../../images/google.webp'
 import Loading from '../Loading/Loading';
 
 const GoogleSingIn = () => {
     const navigate=useNavigate()
+    const location=useLocation()
+    let from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     console.log(user)
     if (error) {
@@ -20,9 +22,7 @@ const GoogleSingIn = () => {
         return <Loading></Loading>
       }
       if (user) {
-        return (
-          navigate('/')
-        );
+          navigate(from, { replace: true });
       }
     return (
         <div>

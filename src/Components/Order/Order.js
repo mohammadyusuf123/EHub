@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import {  useParams } from 'react-router-dom';
+import {  Link, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Order = () => {
     const{inventoriesId}=useParams()
@@ -24,7 +25,6 @@ const Order = () => {
       })
       .then(response=>response.json())
       .then(data=>{
-        alert('Delivered Successfully!!!!')
           console.log(data)
       })
     }
@@ -43,7 +43,7 @@ const Order = () => {
       })
       .then(response=>response.json())
       .then(data=>{
-           alert('Restock Successfully!!!!')
+           toast('Restock Successfully!!!!')
           console.log("Data get",data)
           event.target.reset()
       })
@@ -65,14 +65,18 @@ const Order = () => {
     <Card.Text>
     <strong>Stock:{inventory.stock}</strong>
     </Card.Text>
-    <Button  onClick={handleDelivered} variant="info text-light ms-3">Delivered</Button>
+    <Link to={`/checkout/${inventoriesId}`}>
+   <Button  onClick={handleDelivered} variant="info text-light ms-3">Delivered</Button>
+   </Link>
     <form onSubmit={handleSubmit} class="mt-3">
           <input name='number' type='number' placeholder='Stock Amount' class="form-control mt-3"required id="exampleInputPassword1"/>
           <input className='btn btn-primary w-100 mt-3' type="submit" value="Restoke" />
         </form>
   </Card.Body>
   </div>
+  
 </Card>
+  
         </div>
     );
 };
