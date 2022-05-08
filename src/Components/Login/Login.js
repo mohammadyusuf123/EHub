@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import auth from '../../firebase.init';
 import GoogleSingIn from '../GoogleSingIn/GoogleSingIn';
 import Loading from '../Loading/Loading';
+import axios from 'axios';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -20,11 +21,15 @@ const Login = () => {
        error,
      ] = useSignInWithEmailAndPassword(auth);
      
-     const handleSubmit=(event)=>{
+     const handleSubmit=async(event)=>{
         event.preventDefault()
         const email=event.target.email.value;
         const password=event.target.password.value;
-        signInWithEmailAndPassword(email,password)
+        await signInWithEmailAndPassword(email,password)
+        const{data}=await axios.post('http://localhost:2000/login',{email});
+         localStorage.setItem("accessToken",data)
+         navigate(from, { replace: true })
+         
 
     }
   
@@ -41,9 +46,7 @@ const Login = () => {
     const handleRegister=()=>{
         navigate(from, { replace: true })
     }
-    if(user){
-        navigate(from, { replace: true });
-    }
+    
     if(loading){
         return<Loading></Loading>
     }
