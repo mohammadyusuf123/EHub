@@ -16,6 +16,7 @@ import Order from './Components/Order/Order';
 import Register from './Components/Register/Register';
 import RequireAuth from './Components/RequireAuth/RequireAuth';
 import { ToastContainer } from 'react-toastify';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
       
      </Routes>
      <ToastContainer></ToastContainer>
+     <Footer></Footer>
     </div>
   );
 }
