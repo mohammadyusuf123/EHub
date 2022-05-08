@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useTransition } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
@@ -7,6 +7,7 @@ import auth from '../../firebase.init';
 import GoogleSingIn from '../GoogleSingIn/GoogleSingIn';
 import Loading from '../Loading/Loading';
 import axios from 'axios';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -20,15 +21,17 @@ const Login = () => {
        loading,
        error,
      ] = useSignInWithEmailAndPassword(auth);
-     
+     console.log(user)
+     const[token]=useToken(user)
      const handleSubmit=async(event)=>{
         event.preventDefault()
         const email=event.target.email.value;
         const password=event.target.password.value;
         await signInWithEmailAndPassword(email,password)
-        const{data}=await axios.post('http://localhost:2000/login',{email});
-         localStorage.setItem("accessToken",data)
-         navigate(from, { replace: true })
+        // const{data}=await axios.post('http://localhost:2000/login',{email});
+        // console.log(data)
+        //  localStorage.setItem("accessToken",data)
+        
          
 
     }
@@ -50,7 +53,9 @@ const Login = () => {
     if(loading){
         return<Loading></Loading>
     }
-   
+   if(token){
+    navigate(from, { replace: true })
+   }
     if (error) {
         return (
           <div>

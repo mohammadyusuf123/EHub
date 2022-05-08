@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import GoogleSingIn from '../GoogleSingIn/GoogleSingIn';
 import Loading from '../Loading/Loading';
 
@@ -17,6 +18,7 @@ const Register = () => {
     const handleLogIn=()=>{
         navigate('/login')
     }
+    const[token]=useToken(user)
     const handleSubmit=(event)=>{
         event.preventDefault()
         const email=event.target.email.value;
@@ -34,7 +36,7 @@ const Register = () => {
         createUserWithEmailAndPassword(email,password)
 
     }
-    if(user){
+    if(token){
         navigate('/')
     }
     if(loading){

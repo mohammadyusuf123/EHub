@@ -2,6 +2,7 @@ import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import google from'../../images/google.webp'
 import Loading from '../Loading/Loading';
 
@@ -10,6 +11,7 @@ const GoogleSingIn = () => {
     const location=useLocation()
     let from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [token]=useToken(user)
     console.log(user)
     if (error) {
         return (
@@ -21,7 +23,7 @@ const GoogleSingIn = () => {
       if (loading) {
         return <Loading></Loading>
       }
-      if (user) {
+      if (token) {
           navigate(from, { replace: true });
       }
     return (
