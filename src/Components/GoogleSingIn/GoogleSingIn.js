@@ -12,7 +12,6 @@ const GoogleSingIn = () => {
     let from = location.state?.from?.pathname || "/";
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [token]=useToken(user)
-    console.log(user)
     if (error) {
         return (
           <div>

@@ -15,6 +15,7 @@ import NotFound from './Components/NotFound/NotFound';
 import Order from './Components/Order/Order';
 import Register from './Components/Register/Register';
 import RequireAuth from './Components/RequireAuth/RequireAuth';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
        <Route path='*' element={<NotFound></NotFound>}></Route>
       
      </Routes>
+     <ToastContainer></ToastContainer>
     </div>
   );
 }
